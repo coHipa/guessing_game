@@ -18,7 +18,10 @@ fn main() {
 
         let guess: u8 = match guess.trim().parse() {
             Ok(random_number) => random_number,
-            Err(_) => continue
+            Err(_) => {
+                println!("You have to enter a number");
+                continue;
+            }
         };
 
         match guess.cmp(&secret_number) {
