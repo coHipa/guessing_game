@@ -2,11 +2,14 @@ use std::{io, cmp::Ordering};
 use random_number::random;
 fn main() {
     println!("Guess through hell");
-    
+
     let secret_number: u8 = random!(0, 100);
     let mut player_health = 100;
+    let mut attempts: u8 = 0;
 
-    loop {        
+    loop {
+        attempts += 1;
+
         println!("Enter your guess: ");
         let mut guess = String::new();
         io::stdin()
@@ -20,7 +23,7 @@ fn main() {
 
         match guess.cmp(&secret_number) {
             Ordering::Equal => {
-                println!("You win");
+                println!("You escaped hell. ({}, attempts)", attemps);
                 break;
             }
             Ordering::Greater => {
