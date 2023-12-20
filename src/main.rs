@@ -23,7 +23,7 @@ fn main() {
 
         match guess.cmp(&secret_number) {
             Ordering::Equal => {
-                println!("You escaped hell. ({}, attempts)", attemps);
+                println!("You escaped hell. ({}, attempts)", attempts);
                 break;
             }
             Ordering::Greater => {
