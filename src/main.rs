@@ -10,11 +10,11 @@ fn main() {
     
     while player.hp > 0 {
         let enemy_count = random!(1,5);
-        let mut little_enemy = Enemy {hp: 10, dmg: 5, sec_num: random!(1, 10)};
         let mut boss_enemy = Enemy {hp: 100, dmg: 20, sec_num: random!(1, 100)};
         let mut is_dead = false;
         
-        for _i in 1..=enemy_count {   
+        for _i in 1..=enemy_count {
+            let mut little_enemy = Enemy {hp: 10, dmg: 5, sec_num: random!(1, 10)};
             attack_little(&mut player, &mut little_enemy)
         }
         while !is_dead{
