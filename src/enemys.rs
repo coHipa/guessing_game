@@ -24,7 +24,7 @@ pub fn attack_little(player: &mut Player, enemy: &mut Enemy) {
         println!("You killed that enemy.");
     } else {
         player.hp -= enemy.dmg;
-        println!("Your guess was wrong, you're hit {}", player.hp);
+        println!("Your guess was wrong, you're hit {} HP left", player.hp);
     }
 }
 
