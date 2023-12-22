@@ -1,48 +1,22 @@
-use std::{io, cmp::Ordering};
 use random_number::random;
+use crate::enemys::{Player, Enemy, attack_little, attack_boss};
+
+mod enemys;
 fn main() {
     println!("Guess through hell");
+    println!("You wake up in hell and have to guess your way out.");
 
-    let secret_number: u8 = random!(0, 100);
-    let mut player_health = 100;
-    let mut attempts: u8 = 0;
-
-    loop {
-        attempts += 1;
-
-        println!("Enter your guess: ");
-        let mut guess = String::new();
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Invalid input");
-
-        let guess: u8 = match guess.trim().parse() {
-            Ok(random_number) => random_number,
-            Err(_) => {
-                println!("You have to enter a number");
-                continue;
-            }
-        };
-
-        match guess.cmp(&secret_number) {
-            Ordering::Equal => {
-                println!("You escaped hell. ({}, attempts)", attempts);
-                break;
-            }
-            Ordering::Greater => {
-                player_health -= 10;
-                println!("You gussed to high, remaining health: {}", player_health);
-            }
-            Ordering::Less => {
-                player_health -= 10;
-                println!("Your guess was to low, remaining health: {}", player_health);
-            }
-  
-        };            
-
-        if player_health < 1 {
-            println!("You lost all your HP, start a new game.");
-            break;
+    let mut player = Player {hp: 100, dmg: 10};
+    
+    while player.hp > 0 {
+        let enemy_count = random!(1,5);
+        let mut boss_enemy = Enemy {hp: 100, dmg: 20};
+        
+        for _ in 1..=enemy_count {
+            let mut little_enemy = Enemy {hp: 10, dmg: 5};
+            attack_little(&mut player, &mut little_enemy)
         }
+
+        attack_boss(&mut player, &mut boss_enemy); 
     }
 }
