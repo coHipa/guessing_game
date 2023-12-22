@@ -30,10 +30,10 @@ pub fn attack_little(player: &mut Player, enemy: &mut Enemy) {
 
 pub fn attack_boss(player: &mut Player, enemy: &mut Enemy) {
     let mut player_input = String::new();
-    let mut secret_number = random!(1,100);
+    let mut secret_number = random!(1,50);
     println!("Fight that boss (0-100)");
     
-    while enemy.hp > 0 {
+    while enemy.hp > 0 && player.hp > 0 {
         player_input.clear();
         io::stdin().read_line(&mut player_input).expect("Invalid Input");
         let player_guess: u8 = player_input.trim().parse().expect("You must enter a number");
@@ -50,7 +50,7 @@ pub fn attack_boss(player: &mut Player, enemy: &mut Enemy) {
             Ordering::Equal => {
                 enemy.hp -= player.dmg;
                 println!("Your guess was right, boss HP: {}", enemy.hp);
-                secret_number = random!(1,100);
+                secret_number = random!(1,50);
             }
         }
     }

@@ -12,7 +12,7 @@ fn main() {
         let enemy_count = random!(1,5);
         let mut boss_enemy = Enemy {hp: 100, dmg: 20};
         
-        for i in 1..=enemy_count {
+        for _ in 1..=enemy_count {
             let mut little_enemy = Enemy {hp: 10, dmg: 5};
             attack_little(&mut player, &mut little_enemy)
         }
