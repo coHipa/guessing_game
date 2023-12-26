@@ -1,5 +1,9 @@
 # Guessing Game
 
+## PythonVersion
+Follow [PythonVersion](https://github.com/coHipa/guessing_game_py)
+I don't update the Rust version, until I'm more familiar with programming logic.
+
 ## There are many GuessingGames out there but this one is mine.
 The base game is copied from the [Learn Rust book](https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html).
 I try to add some own ideas like:
